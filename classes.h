@@ -11,3 +11,9 @@ class parcel : item {
     double size[3];
     std::string contents;
 };
+
+class person{
+    std::string names;
+    std::string surname;
+};
+    
