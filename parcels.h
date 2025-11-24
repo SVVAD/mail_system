@@ -56,5 +56,5 @@ public:
 
     double* getSize() { return size; }
 
-    string& getContents() { return contents; }
+    string getContents() { return contents; }
 };
