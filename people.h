@@ -13,3 +13,10 @@ void setSurname(string Surname) { surname = Surname; }
 string returnName() { return name }
 string returnSurname() { return surname }
 };
+
+class customer : public person {
+};
+
+class clerk : public person {
+};
+
