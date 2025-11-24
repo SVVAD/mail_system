@@ -34,7 +34,7 @@ public:
 };
 
 
-class parcel : item {
+class parcel : public item {
 private:
     int weight; //weight in gramms, round up to nearest gram
     double size[3];
