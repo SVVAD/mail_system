@@ -12,7 +12,7 @@ public:
     void setType(bool t) { type = t; }
 
     void setPostcode(char* pc) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             postcode[i] = pc[i];
         }
     }
@@ -20,7 +20,7 @@ public:
     void setDeliveryClass(int dc) { deliveryClass = dc; }
 
     void setTrackingNumber(char* tn) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             trackingNumber[i] = tn[i];
         }
     }
