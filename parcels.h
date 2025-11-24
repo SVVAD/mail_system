@@ -11,26 +11,28 @@ public:
     // setters
     void setType(bool t) { type = t; }
 
-    void setPostcode(const char* pc) {
-        strncpy(postcode, pc, 6);
-        postcode[5] = '\0';
+    void setPostcode(char* pc) {
+        for (int i = 0; i < 5; i++) {
+            postcode[i] = pc[i];
+        }
     }
 
     void setDeliveryClass(int dc) { deliveryClass = dc; }
 
-    void setTrackingNumber(const char* tn) {
-        strncpy(trackingNumber, tn, 7);
-        trackingNumber[6] = '\0';
+    void setTrackingNumber(char* tn) {
+        for (int i = 0; i < 5; i++) {
+            trackingNumber[i] = tn[i];
+        }
     }
 
     // getters
-    bool getType() const { return type; }
+    bool getType() { return type; }
 
-    const char* getPostcode() const { return postcode; }
+    char* getPostcode() { return postcode; }
 
-    int getDeliveryClass() const { return deliveryClass; }
+    int getDeliveryClass() { return deliveryClass; }
 
-    const char* getTrackingNumber() const { return trackingNumber; }
+    char* getTrackingNumber() { return trackingNumber; }
 };
 
 
@@ -47,12 +49,12 @@ public:
         size[0] = x; size[1] = y; size[2] = z;
     }
 
-    void setContents(const string& c) { contents = c; }
+    void setContents(string c) { contents = c; }
 
     // getters
-    int getWeight() const { return weight; }
+    int getWeight() { return weight; }
 
-    const double* getSize() const { return size; }
+    double* getSize() { return size; }
 
-    const string& getContents() const { return contents; }
+    string& getContents() { return contents; }
 };
