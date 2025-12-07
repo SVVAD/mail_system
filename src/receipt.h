@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 #include "print.h"
-#include "receipt.h"
+#include "parcels.h"
 using namespace std;
 
-class Receipt : public print, public item {
+class Receipt : public print {
     private:
     double Paid;
     string ETA;
@@ -22,7 +22,7 @@ class Receipt : public print, public item {
         //cout << SetWidth(36, "CLERK:", ClerkName)<<endl;
         cout << SetWidth(36, "POST OFFICE:", "EGHAM, Church Road 67")<<endl;
         cout << GetTime();
-        cout << space << MiddleStr(36, "RECEIPT") << space;
+        cout  space << MiddleStr(36, "RECEIPT") << space;
         
         cout << SetWidth(36, "RECEIPT:", to_string(getID())) << endl;
         //cout << SetWidth(36, "SENDER:", SenderName) << endl;

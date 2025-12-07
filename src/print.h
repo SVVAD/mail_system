@@ -14,8 +14,16 @@ class print{
     string GetTime(){
         time_t timestamp;
         time(&timestamp);
-        char output[50];
-        strftime(output, 50, "%D                    %T", localtime(&timestamp));
+        char output[16];
+        strftime(output, 16, "%T", localtime(&timestamp));
+        return output;
+    }
+
+    string GetDate(){
+        time_t timestamp;
+        time(&timestamp);
+        char output[16];
+        strftime(output, 16, "%d/%m/%y", localtime(&timestamp));
         return output;
     }
 
