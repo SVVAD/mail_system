@@ -12,14 +12,12 @@ private:
     parcel& linkedParcel;   // reference
     double Paid;
     string ETA;
-    string timestamp;
 
 public:
     Receipt(parcel& p, double price)
     : linkedParcel(p)
     {
         Paid = price;
-        timestamp = GetTime();
     }
 
     void setETA(string eta){
@@ -30,7 +28,7 @@ public:
 
         cout << space << postOffice << endl;
         cout << SetWidth(36, "POST OFFICE:", "EGHAM, Church Road 67")<<endl;
-        cout << timestamp;
+        cout << GetTime();
 
         cout << space << MiddleStr(36, "RECEIPT") << space;
 
