@@ -5,6 +5,7 @@ using namespace std;
 string dummy;
 vector<string> username_database = {"svvad", "b", "Sam"}; //replace with class
 vector<string> password_database = {"1234", "8008"}; //replace with class
+vector<string> trackingNum_database = {"A0HSAS", "W0A76Y"}; //replace with class
 
 void Welcome();
 
@@ -19,7 +20,6 @@ int main(){
         string password;
         bool log_loop = 1;
         while(log_loop){//login loop
-            bool usr=0;
             int index = 0;
             cout << "Type 'exit' if you want to stop login process.\n";
             cout << "Please enter your username below: ";
@@ -32,14 +32,14 @@ int main(){
                     break;
                 }
                 else if(login == username_database[i]){
-                    usr=1;
-                    index=i;
                     break;
                 }
-                else{continue;}
+                else{
+                    index=i+1;
+                    continue;}
             }
 
-            if(index < password_database.size() && usr){
+            if(index < password_database.size()){
                 cout << "Please enter your password below: ";
                 std::getline(cin, password);
                 cout << endl;
@@ -51,19 +51,51 @@ int main(){
                         cout << "1. Track your parcel\n";
                         cout << "2. Print your receipt\n";
                         cout << "3. Exit\n";
+                        cout << "Input: ";
                         std::getline(cin, user_choice);    
                         cout << endl;
 
                         if(user_choice == "1" || user_choice == "2"){
+                            string track_log;
+
                             while(1){//Track loop
                                 cout <<"Please input Tracking Number: ";
+                                std::getline(cin, track_log);
+                                cout << endl;
+                                index = 0;
+                                if(track_log.size() != 6){
+                                    cout << "Tracking number is wrong!\n\n";                                
+                                }
 
-                            }
-
-
-                            //Do Tracking parcel                    
-                        
-                        
+                                else{
+                                    for (int i=0; i< trackingNum_database.size(); i++){    
+                                        if(track_log==trackingNum_database[i]){
+                                            break;
+                                        }
+                                        else{
+                                            index = i+1;
+                                        }
+                                    }
+                                    if(index < password_database.size()){
+                                        cout << "Your tracking number is " << track_log << endl;
+                                        //decode ID(same for parcel and receipts)
+                                        if(user_choice == "1"){
+                                            cout << "Here is you parcel status:\n";
+                                            //print parcel status(from class parcel)
+                                            break;
+                                        }
+                                        else if(user_choice == "2"){
+                                            cout << "Here is you receipt:\n";
+                                            //print receipt (same ID as parcel)
+                                            break;
+                                        }
+                                    }
+                                    
+                                    else{
+                                    cout << "Tracking number is wrong or doesn't exist!\n\n";
+                                    }
+                                }
+                            }        
                         }
                         else if(user_choice == "3"){
                             log_loop=0;
@@ -120,7 +152,6 @@ void Welcome(){
     cout << "------------------------------------" << endl;
     cout << "Input: ";
 }
-
     //This is a machine at the postal office, make it behave like one
     /*
 loop1{
