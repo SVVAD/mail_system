@@ -38,10 +38,20 @@ class item {
 };
 
 class parcel : public item {
-    private:
-    public:
-    // setters
-    // getters
-};
+private:
+    string destination;
+    string status;
 
+public:
+
+    void setDestination(string d) { destination = d; }
+    void setStatus(string s) { status = s; }
+
+    string getDestination() { return destination; }
+    string getStatus() { return status; }
+
+    void updateStatus(string newStatus){
+        status = newStatus;
+    }
+};
 #endif
