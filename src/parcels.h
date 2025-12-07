@@ -1,0 +1,47 @@
+#ifndef PARCELS_H
+#define PARCELS_H
+
+#include <string>
+using namespace std;
+
+class item {
+    private:
+    int ID;
+    double size[3];
+    double weight;
+    string postcode; //6 charachter post code
+    string contents;
+    string trackingNumber;
+
+    public:
+    // setters    
+    void setPostcode(string pc) {
+        postcode = pc;
+    }
+    void setTrackingNumber(string tn) {
+        trackingNumber = tn;
+    }
+    void setContents(string c){
+        contents = c; 
+    }
+    void setSize(double x, double y, double z) {
+        size[0] = x; size[1] = y; size[2] = z;
+    }   
+    
+    // getters
+    int getID() {return ID;}
+    double getWeight(){return weight;}
+    double* getSize() { return size; }
+    string getPostcode() { return postcode; }
+    string getContents() { return contents; }
+    string getTrackingNumber() { return trackingNumber; }
+};
+
+class parcel : public item {
+    private:
+    public:
+    // setters
+    // getters
+};
+
+#endif
