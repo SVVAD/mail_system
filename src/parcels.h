@@ -11,15 +11,15 @@ class item {
     double weight;
     string postcode; //6 charachter post code
     string contents;
-    string trackingNumber;
+    TrackingNum trackingNumber;
 
     public:
     // setters    
     void setPostcode(string pc) {
         postcode = pc;
     }
-    void setTrackingNumber(string tn) {
-        trackingNumber = tn;
+    void setTrackingNumber(TrackingNum tn){
+       trackingNumber = tn;
     }
     void setContents(string c){
         contents = c; 
@@ -34,7 +34,7 @@ class item {
     double* getSize() { return size; }
     string getPostcode() { return postcode; }
     string getContents() { return contents; }
-    string getTrackingNumber() { return trackingNumber; }
+    TrackingNum getTrackingNumber() { return trackingNumber; }
 };
 
 class parcel : public item {
