@@ -31,7 +31,7 @@ class Receipt : public print, public item {
         cout << SetWidth(37, "TOTAL PAID £:", DoubleToStr(Paid)) << endl;
         cout << SetWidth(36, "TRACKING:", getTrackingNumber());
         cout << SetWidth(36, "ETA:", ETA);
-        cout <<space << tyvm << space;
+        cout <<space << "         ***THANK YOU!!!***         " << space;
     }
 };
 #endif

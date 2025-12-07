@@ -1,78 +1,7 @@
-#ifndef LOGIN_H
-#define LOGIN_H
-
 #include <iostream>
-#include <string>
-#include <vector>
+#include "people.h"
 
 using namespace std;
-
-class Recipient {
-    private:
-    string username;
-    string password;
-    public:
-    // Constructor to create a new user object
-    Recipient(string u, string p) {
-        username = u;
-        password = p;
-    }
-    string getUsername() {
-        return username;
-    }
-    string getPassword() {
-        return password;
-    }
-};
-
-void postal_worker_login();                                 // Handles the staff login
-void recipient_register(vector<Recipient>& users);          // Handles creating a new account
-void recipient_login(vector<Recipient>& users);             // Handles user login
-
-
-void Start () {
-    vector<Recipient> user_database;
-    // Main Menu Loop
-    bool system_running = true;
-    while (system_running) {
-        
-        cout << "\n------------------------------------" << endl;
-        cout << "Welcome to the Post Office System" << endl;
-        cout << "1. Postal Worker Login" << endl;
-        cout << "2. Create Recipient Account" << endl;
-        cout << "3. Recipient Login" << endl;
-        cout << "4. Exit System" << endl;
-        cout << "------------------------------------" << endl;
-        
-        // Asking user for choice
-        cout << "Enter your choice: ";
-        int choice;
-        cin >> choice;
-        
-        switch(choice){
-            case 1:
-            postal_worker_login();
-            break;
-            
-            case 2:
-            recipient_register(user_database);
-            break;
-            
-            case 3:
-            recipient_login(user_database);
-            break;
-            
-            case 4:
-            cout << "Shutting down system..." << endl;
-            system_running = false;
-            break;
-            
-            default:
-            cout << "Invalid choice, please try again." << endl;
-            break;
-        }
-    }
-}
 
 // function for Postal Worker Login
 void postal_worker_login() {
@@ -97,7 +26,7 @@ void postal_worker_login() {
 }
 
 // function for Registering a Recipient
-void recipient_register(vector<Recipient>& users) {
+void recipient_register(vector<customer>& users) {
     string new_user, new_pass;
     
     cout << "\n--- CREATE RECIPIENT ACCOUNT ---" << endl;
@@ -107,14 +36,14 @@ void recipient_register(vector<Recipient>& users) {
     cin >> new_pass;
     
     // Creating object and adding to vector
-    Recipient newUser(new_user, new_pass);
+    customer newUser(new_user, new_pass);
     users.push_back(newUser);
     
     cout << "Account created successfully for " << new_user << endl;
 }
 
 // function for Recipient Login
-void recipient_login(vector<Recipient>& users) {
+void recipient_login(vector<customer& users) {
     string input_user, input_pass;
     bool login_success = false;
     
@@ -140,5 +69,3 @@ void recipient_login(vector<Recipient>& users) {
         cout << "Login Failed. Invalid Username or Password." << endl;
     }
 }
-
-#endif
