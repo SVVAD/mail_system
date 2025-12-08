@@ -9,11 +9,15 @@ class TrackingNum{//class to generate tracking number
     string trackingNumber;
     string creationDate;
     public:
+    TrackingNum() {}
     TrackingNum(int index){
         trackingNumber = genTrack(index);
         //creationDate = GetTime();
     }
-    
+    void SetTrackNum(string TN)
+    {
+        trackingNumber = TN;
+    }
     char numToChar(int number){
         int ascii;
         if(0<= number && number < 10){
@@ -25,7 +29,10 @@ class TrackingNum{//class to generate tracking number
         else{ascii = 43;}
         return char(ascii);
     }
-    
+    string GetStringTrackNum()
+    {
+        return trackingNumber;
+    }
     string genTrack(int index){
         string number = "543210";
         int char1 = rand()%26 + 10;
