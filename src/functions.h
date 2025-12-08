@@ -5,12 +5,12 @@
 #include <string>
 #include <vector>
 
-#include "people.h"
+using namespace std;
 #include "parcels.h"
+#include "people.h"
 #include "track.h"
 #include "receipt.h"
 
-using namespace std;
 
 string dummy;
 
@@ -61,7 +61,7 @@ void LoginUser(){
         int index = 0;
         cout << "Type 'exit' if you want to stop login process.\n";
         cout << "Please enter your username below: ";
-        std::getline(cin, login);
+        getline(cin, login);
         cout << endl;
 
         for (int i=0; i < customers_db.size(); i++){//verify username exists
@@ -80,7 +80,7 @@ void LoginUser(){
 
         if(index < customers_db.size() && log_loop){
             cout << "Please enter your password below: ";
-            std::getline(cin, password);
+            getline(cin, password);
             cout << endl;
             if(password == customers_db[index].getPassword()){ //password database
                 cout << "User successfully logged in!\n";
@@ -94,14 +94,14 @@ void LoginUser(){
                     cout << "3. Exit\n";
                     cout << "\n------------------------------------" << endl;
                     cout << "Input: ";
-                    std::getline(cin, user_choice);    
+                    getline(cin, user_choice);    
                     cout << endl;
 
                     if(user_choice == "1" || user_choice == "2"){
                         string track_log;
                         while(1){//Track loop
                             cout <<"Please input Tracking Number: ";
-                            std::getline(cin, track_log);
+                            getline(cin, track_log);
                             cout << endl;
                             index = 0;
                             
@@ -132,6 +132,7 @@ void LoginUser(){
                                         logged->trackParcel(track_log, parcels_db);
                                         break;
                                     }
+
                                     else if(user_choice == "2"){
                                         cout << "Here is you receipt:\n";
                                         //print receipt (same ID as parcel)
@@ -140,6 +141,7 @@ void LoginUser(){
                                         R.printReceipt();
                                         break;
                                     }
+                                        
 
                                 }
                                 else{
@@ -178,7 +180,7 @@ void LoginClerk(){
     while(clerk_loop){//login loop
         cout << "Type 'exit' if you want to stop login process.\n";
         cout << "Please enter your ID below: ";
-        std::getline(cin, clerk_login);
+        getline(cin, clerk_login);
         cout << endl;
         int index=0;
         for (int i=0; i < clerks_db.size(); i++){//verify username exists
@@ -197,7 +199,7 @@ void LoginClerk(){
 
         if(index < clerks_db.size() && clerk_loop){
             cout << "Please enter your password below: ";
-            std::getline(cin, clerk_password);
+            getline(cin, clerk_password);
             cout << endl;
             if(clerk_password == clerks_db[index].getPassword()){ //password database
                 cout << "User successfully logged in!\n";
@@ -212,43 +214,50 @@ void LoginClerk(){
                     cout << "4. Exit\n";
                     cout << "\n------------------------------------" << endl;
                     cout << "Input: ";
-                    std::getline(cin, user_choice);    
+                    getline(cin, user_choice);    
                     cout << endl;
 
                     if(user_choice == "1"){
                         string input;
                         cout << "Input parcel's details:";
                         cout << "\nInput weight of the pracel: ";
-                        std::getline(cin, input);
-                        //setWeight(std::stod(input));
-                        double w = std::stod(input);
+                        getline(cin, input);
+                        //setWeight(stod(input));
+                        double w = stod(input);
 
                         cout << "\nInput destination of the pracel: ";
-                        std::getline(cin, input);
+                        getline(cin, input);
                         string dest = input;
                         //setPostcode(input);
 
                         cout << "\nInput contents of the pracel: ";
-                        std::getline(cin, input);
+                        getline(cin, input);
                         string cont = input;
                         //setContents(input);
 
                         cout << "\nInput volume of the pracel: ";
-                        std::getline(cin, input);
-                        //setSize(inputstd::stod(input));
-                        double vol = std::stod(input);
-                        double sx = vol, sy = 1, sz = 1; // упрощённо, объём разбиваем как угодно
+                        getline(cin, input);
+                        //setSize(inputstod(input));
+                        double vol = stod(input);
+                        double sx = vol, sy = 1, sz = 1; 
 
                         //Use dummy member of class parcel to parcel_database.push_back(dummy) this way storing class data 
-                        parcel p = logged->sendParcel(dest, w, sx, sy, sz, cont, (int)parcels_db.size());
+                        parcel p = logged->sendParcel(dest, w, sx, sy, sz, cont, parcels_db.size());
+                        cout<<p.getTrackingNumberString()<<endl;
+                        p.setID(parcels_db.size()-1);
                         parcels_db.push_back(p);
+                        cout << "Here is you receipt:\n";
+                        Receipt R(parcels_db[(int)parcels_db.size()-1], 8.99);
+                        R.setETA("3 days");
+                        R.printReceipt();
+                        break;
                     }
 
                     else if(user_choice == "2" || user_choice == "3"){
                         string track_log;
                         while(1){//Track loop
                             cout <<"Please input Tracking Number: ";
-                            std::getline(cin, track_log);
+                            getline(cin, track_log);
                             cout << endl;
                             index = 0;
                             
@@ -291,7 +300,7 @@ void LoginClerk(){
                                             cout << "4. Delivered\n";
                                             
                                             cout << "Input: ";
-                                            std::getline(cin, choice);
+                                            getline(cin, choice);
                                             if(choice == "1"){
                                                 /*setStatus == "Received"*/
                                                 logged->changeStatus(track_log, parcels_db, "Received");
@@ -359,7 +368,7 @@ void CreateUser(){
         cout << "Type 'exit' if you want to stop creation process.\n";
         cout << "Write you login of choice (max 16 symbols)\n";
         cout << "Input: ";
-        std::getline(cin, create_login);
+        getline(cin, create_login);
         cout << endl;
         if(create_login == "exit"){
             cout << "\nExiting Creation menu...\n";
@@ -382,7 +391,7 @@ void CreateUser(){
                 while(1){
                     cout << "Write your password of choice (max 24 symbols)\n";
                     cout << "Input: ";
-                    std::getline(cin, create_password);
+                    getline(cin, create_password);
                     cout << endl;
                     if(create_password.size() < 25){
                         break;

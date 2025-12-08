@@ -3,9 +3,11 @@
 
 #include <iostream>
 #include <string>
+
+using namespace std;
+
 #include "print.h"
 #include "parcels.h"
-using namespace std;
 
 class Receipt : public print {
 private:
@@ -33,10 +35,10 @@ public:
         cout << space << MiddleStr(36, "RECEIPT") << space;
 
         cout << SetWidth(36, "RECEIPT:", to_string(linkedParcel.getID())) << endl;
-        cout << SetWidth(36, "DEST:", linkedParcel.getDestination()) << endl;
-        cout << SetWidth(36, "WEIGHT:", DoubleToStr(linkedParcel.getWeight()) + " kg") << endl;
+        cout << SetWidth(36, "DEST:", /*linkedParcel.getDestination()*/ "Somewhere nice") << endl;
+        cout << SetWidth(36, "WEIGHT:", /*DoubleToStr(linkedParcel.getWeight()) + " kg"*/  "A lot") << endl;
         cout << SetWidth(37, "TOTAL PAID £:", DoubleToStr(Paid)) << endl;
-        cout << SetWidth(36, "TRACKING:", linkedParcel.getTrackingNumber()) << endl; 
+        cout << SetWidth(36, "TRACKING:", linkedParcel.getTrackingNumberString()) << endl; 
         cout << SetWidth(36, "ETA:", ETA);
         cout <<space << "         ***THANK YOU!!!***         " << space;
     }

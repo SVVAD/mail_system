@@ -1,9 +1,9 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
-#include "parcels.h"
-#include "track.h"
 #include <string>
 using namespace std;
+#include "parcels.h"
+#include "track.h"
 
 class person {
     private:
@@ -67,17 +67,19 @@ public:
         newParcel.setContents(contents);
         newParcel.setSize(sX, sY, sZ);
         newParcel.setTrackingNumber(trackNum.genTrack(ind));
+        newParcel.setStatus("Received");
         return newParcel;
     }
     void changeStatus(string trackNum, vector<parcel>& storage, string newStatus) {
         for (int i = 0; i < storage.size(); i++) {
             if (storage[i].getTrackingNumberString() == trackNum) {
                 cout << "Status changed to " << newStatus << " for " << trackNum << endl;
+                storage[i].setStatus(newStatus);
                 return;
             }
         }
         cout << "Tracking not found\n";
-};
+}};
 
 
 

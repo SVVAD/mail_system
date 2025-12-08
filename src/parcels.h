@@ -1,8 +1,8 @@
 #ifndef PARCELS_H
 #define PARCELS_H
-#include "track.h"
 #include <string>
 using namespace std;
+#include "track.h"
 
 class item {
     private:
@@ -14,7 +14,10 @@ class item {
     TrackingNum trackingNumber;
 
     public:
-    // setters    
+    // setters
+    void setID(int index){
+        ID = index;
+    } 
     void setPostcode(string pc) {
         postcode = pc;
     }
