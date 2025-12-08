@@ -1,26 +1,27 @@
 #include "functions.h"
 
-int main(){
+int main() {
+    InitDummy();
     string choose_log;
-    while(1){//system loop
+    while (1) {//system loop
         Welcome();
-        std::getline(cin, choose_log);    
+        std::getline(cin, choose_log);
         cout << endl;
-    if(choose_log == "1"){  
-        LoginUser();
-    } 
-    else if(choose_log == "2"){
-        LoginClerk();
+        if (choose_log == "1") {
+            LoginUser();
+        }
+        else if (choose_log == "2") {
+            LoginClerk();
+        }
+        else if (choose_log == "3") {
+            CreateUser();
+        }
+        else {
+            cout << "Wrong Input!\n";
+            choose_log = "";
+        }
     }
-    else if(choose_log == "3"){
-       CreateUser();
-    }
-    else{
-        cout << "Wrong Input!\n";
-        choose_log = "";
-    }   
-    }
-        return 0;
+    return 0;
 }
 
 //This is a machine at the postal office, make it behave like one
