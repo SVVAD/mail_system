@@ -18,8 +18,9 @@ class item {
     void setPostcode(string pc) {
         postcode = pc;
     }
-    void setTrackingNumber(TrackingNum tn){
-       trackingNumber = tn;
+    void setTrackingNumber(string TN)
+    {
+        trackingNumber.SetTrackNum(TN);
     }
     void setContents(string c){
         contents = c; 
@@ -35,6 +36,7 @@ class item {
     string getPostcode() { return postcode; }
     string getContents() { return contents; }
     TrackingNum getTrackingNumber() { return trackingNumber; }
+    string getTrackingNumberString() { return trackingNumber.GetStringTrackNum(); }
 };
 
 class parcel : public item {
@@ -43,7 +45,7 @@ private:
     string status;
 
 public:
-
+    parcel() {}
     void setDestination(string d) { destination = d; }
     void setStatus(string s) { status = s; }
 
@@ -55,3 +57,4 @@ public:
     }
 };
 #endif
+
