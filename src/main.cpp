@@ -4,7 +4,7 @@
 using namespace std;
 string dummy;
 vector<string> username_database = {"svvad", "b", "Sam"}; //replace with class
-vector<string> password_database = {"1234", "8008"}; //replace with class
+vector<string> password_database = {"1234", "8008", "12"}; //replace with class
 vector<string> trackingNum_database = {"A0HSAS", "W0A76Y"}; //replace with class
 
 void Welcome();
@@ -129,10 +129,56 @@ int main(){
     }
     
     else if(choose_log == "3"){
-        string create;
-        cout << "Create account\n";    //
-    }
+        string create_login;
+        string create_password;
+        bool loop_create = 1; 
+        while(loop_create){
+            cout << "Type 'exit' if you want to stop creation process.\n";
+            cout << "Write you login of choice (max 16 symbols)\n";
+            cout << "Input: ";
+            std::getline(cin, create_login);
+            cout << endl;
+            if(create_login == "exit"){
+                cout << "\nExiting Creation menu...\n";
+                break;
+            }
+            else if(create_login.size()<=16){
+                for (int i=0; i < username_database.size(); i++){//verify username exists
+                    if(create_login == username_database[i]){
+                        cout << "Username already exists, try loggin in.\n";
+                        loop_create=0;
+                        break;
+                    }                
+                }
+                if(loop_create){
+                    cout << "Username added.\n";
+                    username_database.push_back(create_login);
+                    password_database.push_back("0");
 
+                    //;
+                while(1){
+                    cout << "Write your password of choice (max 24 symbols)\n";
+                    cout << "Input: ";
+                    std::getline(cin, create_password);
+                    cout << endl;
+                    if(create_password.size() < 25){
+                        break;
+                    }
+                    else{
+                        cout << "Unaccepatble password. Try again.\n";
+                    }                    
+                }
+                    password_database[username_database.size()-1] = create_password;
+                    loop_create=0;
+                    break;
+                }
+            }
+            else{
+                cout << "Login is Unacceptable!!!\n";
+                cout << "Try again.\n";
+            }
+        }
+    }
 
     else{
         cout << "Wrong Input!\n";
@@ -152,7 +198,7 @@ void Welcome(){
     cout << "------------------------------------" << endl;
     cout << "Input: ";
 }
-    //This is a machine at the postal office, make it behave like one
+//This is a machine at the postal office, make it behave like one
     /*
 loop1{
     
