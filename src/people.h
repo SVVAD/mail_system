@@ -32,7 +32,24 @@ class customer : public person {
 class clerk : public person {
 private:
     string clerkID;
-    
+
+public:
+    void setID(string id) { clerkID = id; }
+    string getID() { return clerkID; }
+
+    parcel sendParcel(string postC, double weight, double sX, double sY, double sZ, string contents, int ind)
+   {
+        parcel newParcel;
+        TrackingNum trackNum(ind);
+        
+        newParcel.setPostcode(postC);
+        newParcel.setContents(contents);
+        newParcel.setSize(sX, sY, sZ);
+        newParcel.setTrackingNumber( trackNum.genTrack(ind));
+        return newParcel;
+    }
 };
+
+
 
 #endif
