@@ -152,6 +152,7 @@ void LoginClerk(){
             int index=0;
             for (int i=0; i < admin_database.size(); i++){//verify username exists
                 if(clerk_login == "exit"){
+                    clerk_loop = 0;
                     break;
                 }
                 else if(clerk_login == admin_database[i]){
@@ -162,7 +163,7 @@ void LoginClerk(){
                     continue;}
             }
 
-            if(index < adminPass_database.size()){
+            if(index < adminPass_database.size() && clerk_loop){
                 cout << "Please enter your password below: ";
                 std::getline(cin, clerk_password);
                 cout << endl;
@@ -212,6 +213,7 @@ void LoginClerk(){
                                     cout << "Exiting...\n";
                                     break;
                                 }
+
                                 else if(track_log.size() != 6){
                                     cout << "Tracking number is wrong!\n\n";                                
                                 }
