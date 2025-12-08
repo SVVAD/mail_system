@@ -241,7 +241,6 @@ void LoginClerk(){
                         double vol = stod(input);
                         double sx = vol, sy = 1, sz = 1; 
 
-                        //Use dummy member of class parcel to parcel_database.push_back(dummy) this way storing class data 
                         parcel p = logged->sendParcel(dest, w, sx, sy, sz, cont, parcels_db.size());
                         cout<<p.getTrackingNumberString()<<endl;
                         p.setID(parcels_db.size()-1);
